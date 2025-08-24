@@ -25,11 +25,28 @@ def print_query(view_name:str):
 
 menu_choice = ''
 while menu_choice != 'Z':
-    menu_choice = input("Welcome to F1 drivers(As of July 2025 and not including sprints) Database!\n\n"
+    menu_choice = input("Welcome to F1 drivers from 2025 Grid Database!\n\n"
+    "PLEASE NOTE!: The following Database INCLUDES the following\n"
+    "- Drivers who are on the grid as of July 2025\n"
+    "- Their stats as of July 2025\n"
+    "- The drivers career points NOT their current season points\n"
+    "- The drivers career podiums NOT their current season podiums\n"
+    "- The amount of races is the amount of starts\n"
+    "- Sprints are not counted in the points or races\n\n"
+    
                         "Type the letter for the information you want: \n"
                         "A: Drivers from United Kingdom\n"
                         "B: Youngest to oldest\n"
-                        "C: Drivers older than 25 years old\n")
+                        "C: Drivers older than 25 years old\n"
+                        "D: Non European Drivers\n"
+                        "E: Drivers with 3 or more podium\n"
+                        "F: Drivers that have more than 7 races and more than 1000 career points\n"
+                        "G: European Drivers\n"
+                        "H: Drivers aged 25 or older\n"
+                        "I: Drivers with no podiums\n"
+                        "J: Drivers with at least 1 podium and 400 points\n"
+                        
+                        )
     
     menu_choice = menu_choice.upper()
     if menu_choice == 'A':
@@ -38,3 +55,18 @@ while menu_choice != 'Z':
         print_query("All drivers youngest to oldest")
     elif menu_choice == 'C': 
         print_query("Older than 25")
+    elif menu_choice == 'D': 
+        print_query("Non European Drivers")
+    elif menu_choice == 'E': 
+        print_query("3 or more podiums")
+    elif menu_choice == 'F': 
+        print_query("More than 75 races and more than 1000 points")
+    elif menu_choice == 'G': 
+        print_query("European Drivers")
+    elif menu_choice == 'H': 
+        print_query("Age 25 or younger")
+    elif menu_choice == 'I': 
+        print_query("No podiums")
+    elif menu_choice == 'J': 
+        print_query("At least 1 podium and 400 points")
+
