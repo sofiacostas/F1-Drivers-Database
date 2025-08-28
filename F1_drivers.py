@@ -26,6 +26,7 @@ def print_query(view_name:str):
 menu_choice = ''
 while menu_choice != 'Z':
     menu_choice = input("Welcome to F1 drivers from 2025 Grid Database!\n\n"
+    
     "PLEASE NOTE!: The following Database INCLUDES the following\n"
     "- Drivers who are on the grid as of July 2025\n"
     "- Their stats as of July 2025\n"
@@ -35,17 +36,27 @@ while menu_choice != 'Z':
     "- Sprints are not counted in the points or races\n\n"
     
                         "Type the letter for the information you want: \n"
-                        "A: Drivers from United Kingdom\n"
+                        "A: From United Kingdom\n"
                         "B: Youngest to oldest\n"
-                        "C: Drivers older than 25 years old\n"
+                        "C: Older than 25 years old\n"
                         "D: Non European Drivers\n"
-                        "E: Drivers with 3 or more podium\n"
+                        "E: Have 3 or more podiums\n"
                         "F: Drivers that have more than 7 races and more than 1000 career points\n"
                         "G: European Drivers\n"
-                        "H: Drivers aged 25 or older\n"
-                        "I: Drivers with no podiums\n"
+                        "H: Aged 25 or older\n"
+                        "I: Have no podiums\n"
                         "J: Drivers with at least 1 podium and 400 points\n"
-                        
+                        "K: McLaren, Ferrari, Williams, Haas or Alpine drivers\n"
+                        "L: Less than 100 races\n"
+                        "M: 100 or more races\n"
+                        "N: Asia and Oceania drivers\n"
+                        "O: South and North America drivers\n"
+                        "P: Mercedes, Red Bull, Sauber, Racing Bulls, or Aston Martin drivers\n"
+                        "Q: Less than 500 points\n"
+                        "R: In their 20s and have at least 30 races\n"
+                        "S: Red Bull and Racing Bulls drivers\n"
+                        "T: Between 10 to 100 podiums\n"
+                        "U: 35+ years old\n"                       
                         )
     
     menu_choice = menu_choice.upper()
@@ -67,6 +78,26 @@ while menu_choice != 'Z':
         print_query("Age 25 or younger")
     elif menu_choice == 'I': 
         print_query("No podiums")
-    elif menu_choice == 'J': 
-        print_query("At least 1 podium and 400 points")
+    elif menu_choice == 'K': 
+        print_query("McLaren, Ferrari, Williams, Haas or Alpine drivers")
+    elif menu_choice == 'L': 
+        print_query("Less than 100 races")
+    elif menu_choice == 'M': 
+        print_query("100 or more races")
+    elif menu_choice == 'N': 
+        print_query("Asia and Oceania drivers")
+    elif menu_choice == 'O': 
+        print_query("North and South America drivers")
+    elif menu_choice == 'P': 
+        print_query("Mercedes, Red Bull, Sauber, Racing Bulls, or Aston Martin drivers")
+    elif menu_choice == 'Q': 
+        print_query("Less than 500 points")
+    elif menu_choice == 'R': 
+        print_query("In 20s and at least 30 races")
+    elif menu_choice == 'S': 
+        print_query("Red Bull and Racing Bulls")
+    elif menu_choice == 'T': 
+        print_query("Between 10 to 100 podiums")
+    elif menu_choice == 'U': 
+        print_query("35+ years old")
 
