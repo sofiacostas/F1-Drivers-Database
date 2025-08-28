@@ -41,7 +41,7 @@ while menu_choice != 'Z':
                         "C: Older than 25 years old\n"
                         "D: Non European Drivers\n"
                         "E: Have 3 or more podiums\n"
-                        "F: Drivers that have more than 7 races and more than 1000 career points\n"
+                        "F: Drivers that have more than 75 races and more than 1000 career points\n"
                         "G: European Drivers\n"
                         "H: Aged 25 or older\n"
                         "I: Have no podiums\n"
@@ -56,7 +56,9 @@ while menu_choice != 'Z':
                         "R: In their 20s and have at least 30 races\n"
                         "S: Red Bull and Racing Bulls drivers\n"
                         "T: Between 10 to 100 podiums\n"
-                        "U: 35+ years old\n"                       
+                        "U: 35+ years old\n"     
+
+                        "\nZ: Exit\n\n""Type option here: "                  
                         )
     
     menu_choice = menu_choice.upper()
