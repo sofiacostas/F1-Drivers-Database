@@ -57,7 +57,7 @@ while menu_choice != 'Z':
                         "D: Older than 25 years old\n"
                         "E: Have 3 or more podiums\n"
                         "F: Drivers that have more than 75 races and more than 1000 career points\n"
-                        "G: Aged 25 or older\n"
+                        "G: Top 8 drivers with the most points\n"
                         "H: Have no podiums\n"
                         "I: Drivers with at least 1 podium and 400 points\n"
                         "J: Less than 100 races\n"
@@ -65,7 +65,7 @@ while menu_choice != 'Z':
                         "L: Less than 500 points\n"
                         "M: In their 20s and have at least 30 races\n"
                         "N: Between 10 to 100 podiums\n"
-                        "O: 35+ years old\n"     
+                        "O: Top 5 drivers with the most podiums\n"     
 
                         "\nZ: Exit\n\n""Type option here: "                  
                         )
@@ -111,7 +111,7 @@ while menu_choice != 'Z':
     elif menu_choice == 'F': 
         print_query("More than 75 races and more than 1000 points")
     elif menu_choice == 'G': 
-        print_query("Age 25 or younger")
+        print_query("Top 8 points")
     elif menu_choice == 'H': 
         print_query("No podiums")
     elif menu_choice == 'I': 
@@ -127,5 +127,5 @@ while menu_choice != 'Z':
     elif menu_choice == 'N': 
         print_query("Between 10 to 100 podiums")
     elif menu_choice == 'O': 
-        print_query("35+ years old")
+        print_query("Top 5 podiums")
 
