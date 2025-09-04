@@ -3,7 +3,23 @@ import sqlite3
 from tabulate import tabulate
 
 # This is the filename of the database to be used
-DB_NAME = 'cars_relationships.db'
+DB_NAME = 'F1_drivers.db'
+
+# This is the SQL to connect to all the tables in the database
+TABLES = (" drivers_stats "
+           "LEFT JOIN teams ON drivers_stats.team_id = teams.team_id "
+           "LEFT JOIN nations ON drivers_stats.nation_id = nations.nation_id ")
+
+
+def print_parameter_query(fields:str, where:str, parameter):
+    """ Prints the results for a parameter query in tabular form. """
+    db = sqlite3.connect(DB_NAME)
+    cursor = db.cursor()
+    sql = ("SELECT " + fields + " FROM " + TABLES + " WHERE " + where)
+    cursor.execute(sql,(parameter,))
+    results = cursor.fetchall()
+    print(tabulate(results,fields.split(",")))
+    db.close()  
 
 def print_query(view_name:str):
     ''' Prints the specified view from the database in a table '''
@@ -30,76 +46,86 @@ while menu_choice != 'Z':
     "PLEASE NOTE!: The following Database INCLUDES the following\n"
     "- Drivers who are on the grid as of July 2025\n"
     "- Their stats as of July 2025\n"
-    "- The drivers career points NOT their current season points\n"
-    "- The drivers career podiums NOT their current season podiums\n"
+    "- The drivers career points AND podiums NOT their current season points AND podiums\n"
     "- The amount of races is the amount of starts\n"
     "- Sprints are not counted in the points or races\n\n"
     
                         "Type the letter for the information you want: \n"
-                        "A: From United Kingdom\n"
-                        "B: Youngest to oldest\n"
-                        "C: Older than 25 years old\n"
-                        "D: Non European Drivers\n"
+                        "A: What team drivers are from\n"
+                        "B: What nation drivers are from\n"
+                        "C: Youngest to oldest\n"
+                        "D: Older than 25 years old\n"
                         "E: Have 3 or more podiums\n"
                         "F: Drivers that have more than 75 races and more than 1000 career points\n"
-                        "G: European Drivers\n"
-                        "H: Aged 25 or older\n"
-                        "I: Have no podiums\n"
-                        "J: Drivers with at least 1 podium and 400 points\n"
-                        "K: McLaren, Ferrari, Williams, Haas or Alpine drivers\n"
-                        "L: Less than 100 races\n"
-                        "M: 100 or more races\n"
-                        "N: Asia and Oceania drivers\n"
-                        "O: South and North America drivers\n"
-                        "P: Mercedes, Red Bull, Sauber, Racing Bulls, or Aston Martin drivers\n"
-                        "Q: Less than 500 points\n"
-                        "R: In their 20s and have at least 30 races\n"
-                        "S: Red Bull and Racing Bulls drivers\n"
-                        "T: Between 10 to 100 podiums\n"
-                        "U: 35+ years old\n"     
+                        "G: Aged 25 or older\n"
+                        "H: Have no podiums\n"
+                        "I: Drivers with at least 1 podium and 400 points\n"
+                        "J: Less than 100 races\n"
+                        "K: 100 or more races\n"
+                        "L: Less than 500 points\n"
+                        "M: In their 20s and have at least 30 races\n"
+                        "N: Between 10 to 100 podiums\n"
+                        "O: 35+ years old\n"     
 
                         "\nZ: Exit\n\n""Type option here: "                  
                         )
     
     menu_choice = menu_choice.upper()
-    if menu_choice == 'A':
-        print_query("United Kingdom drivers stats")
+    if menu_choice == 'A': 
+        print('Here are the following teams to choose from\n'
+              '- McLaren\n'
+              '- Ferrari\n'
+              '- Red Bull\n'
+              '- Williams\n'
+              '- Sauber\n'
+              '- Racing Bulls\n'
+              '- Aston Martin\n'
+              '- Haas\n'
+              '- Alpine\n')
+        team = input('Which team do you want to see: ').capitalize()
+        print_parameter_query("name, age, points", "team = ? ORDER BY points DESC",team)
     elif menu_choice == 'B': 
-        print_query("All drivers youngest to oldest")
+        print('Here are the following nations to choose from\n'
+              '- Australia\n'
+              '- United Kingdom\n'
+              '- Monaco\n'
+              '- Italy\n'
+              '- Netherlands\n'
+              '- Japan\n'
+              '- Thailand\n'
+              '- Spain\n'
+              '- Germany\n'
+              '- Brazil\n'
+              '- New Zealand\n'
+              '- France\n'
+              '- Canada\n'
+              '- Argentina\n')
+        nation = input('Of what nation do you want to see players of: ').capitalize()
+        print_parameter_query("name, age, points", "nation = ? ORDER BY points DESC",nation)
     elif menu_choice == 'C': 
-        print_query("Older than 25")
+        print_query("All drivers youngest to oldest")
     elif menu_choice == 'D': 
-        print_query("Non European Drivers")
+        print_query("Older than 25")
     elif menu_choice == 'E': 
         print_query("3 or more podiums")
     elif menu_choice == 'F': 
         print_query("More than 75 races and more than 1000 points")
     elif menu_choice == 'G': 
-        print_query("European Drivers")
-    elif menu_choice == 'H': 
         print_query("Age 25 or younger")
-    elif menu_choice == 'I': 
+    elif menu_choice == 'H': 
         print_query("No podiums")
-    elif menu_choice == 'K': 
-        print_query("McLaren, Ferrari, Williams, Haas or Alpine drivers")
-    elif menu_choice == 'L': 
+    elif menu_choice == 'I': 
+        print_query("At least 1 podium and 400 points")    
+    elif menu_choice == 'J': 
         print_query("Less than 100 races")
-    elif menu_choice == 'M': 
+    elif menu_choice == 'K': 
         print_query("100 or more races")
-    elif menu_choice == 'N': 
-        print_query("Asia and Oceania drivers")
-    elif menu_choice == 'O': 
-        print_query("North and South America drivers")
-    elif menu_choice == 'P': 
-        print_query("Mercedes, Red Bull, Sauber, Racing Bulls, or Aston Martin drivers")
-    elif menu_choice == 'Q': 
+    elif menu_choice == 'L': 
         print_query("Less than 500 points")
-    elif menu_choice == 'R': 
+    elif menu_choice == 'M': 
         print_query("In 20s and at least 30 races")
-    elif menu_choice == 'S': 
-        print_query("Red Bull and Racing Bulls")
-    elif menu_choice == 'T': 
+    elif menu_choice == 'N': 
         print_query("Between 10 to 100 podiums")
-    elif menu_choice == 'U': 
+    elif menu_choice == 'O': 
         print_query("35+ years old")
 
